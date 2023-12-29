@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'name' => fake()->text(15),
             'img' => fake()->imageUrl(),
             'gallery' => json_encode($this->getGallery()),
-            'url' => fake()->text(15),
+            'url' => fake()->unique()->slug(1),
             'price' => random_int(1000, 10000),
             'oldPrice' => random_int(1000, 10000),
             'desc' => fake()->text(),

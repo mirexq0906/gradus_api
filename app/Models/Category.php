@@ -22,4 +22,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class, 'category_id', 'id');
+    }
 }

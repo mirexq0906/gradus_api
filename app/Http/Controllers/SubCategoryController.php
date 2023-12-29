@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SubCategory\StoreRequest;
 use App\Http\Requests\SubCategory\UpdateRequest;
-use App\Http\Resources\SubCategoryResource;
-use App\Models\Category;
+use App\Http\Resources\ActionResource;
+use App\Http\Resources\SubCategory\IndexResource;
+use App\Http\Resources\SubCategory\ShowResource;
 use App\Models\SubCategory;
 
 class SubCategoryController extends Controller
@@ -14,7 +15,7 @@ class SubCategoryController extends Controller
     {
         try {
             $subCategories = SubCategory::all();
-            return new SubCategoryResource($subCategories);
+            return IndexResource::collection($subCategories);
         } catch (\Throwable $e) {
             return $e->getMessage();
         }
@@ -24,7 +25,9 @@ class SubCategoryController extends Controller
     {
         try {
             $subCategory = SubCategory::firstWhere('url', $slug);
-            return new SubCategoryResource($subCategory);
+            $products = $subCategory->products;
+            $subCategory['products'] = $products;
+            return new ShowResource($subCategory);
         } catch (\Throwable $e) {
             return $e->getMessage();
         }
@@ -35,7 +38,7 @@ class SubCategoryController extends Controller
         try {
             $data = $request->validated();
             $subCategory = SubCategory::create($data);
-            return new SubCategoryResource($subCategory);
+            return new ActionResource($subCategory);
         } catch (\Throwable $e) {
             return $e->getMessage();
         }
@@ -47,7 +50,7 @@ class SubCategoryController extends Controller
             $data = $request->validated();
             $subCategory = SubCategory::firstWhere('url', $slug);
             $subCategory->update($data);
-            return new SubCategoryResource($subCategory);
+            return new ActionResource($subCategory);
         } catch (\Throwable $e) {
             return $e->getMessage();
         }
@@ -58,7 +61,7 @@ class SubCategoryController extends Controller
         try {
             $subCategory = SubCategory::firstWhere('url', $slug);
             $subCategory->delete();
-            return new SubCategoryResource($subCategory);
+            return new ActionResource($subCategory);
         } catch (\Throwable $e) {
             return $e->getMessage();
         }

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Category\ShowRequest;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
-use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ActionResource;
+use App\Http\Resources\Category\IndexResource;
+use App\Http\Resources\Category\ShowResource;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -12,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return new CategoryResource($categories);
+        return IndexResource::collection($categories);
     }
 
     public function store(StoreRequest $request)
@@ -20,19 +23,26 @@ class CategoryController extends Controller
         try {
             $data = $request->validated();
             $category = Category::create($data);
-            return new CategoryResource($category);
+            return new ActionResource($category);
         } catch (\Throwable $e) {
             return $e->getMessage();
         }
     }
 
-    public function show(string $slug)
+    public function show(ShowRequest $request, string $slug)
     {
         try {
-            $category = Category::firstWhere('url', $slug);
-            $category->subCategories;
-            $category->products;
-            return new CategoryResource($category);
+            $category = Category::with(['subCategories', 'products', 'videos'])->firstWhere('url', $slug);
+
+            $subCategories = $request->limit_sub_categories ? $category->subCategories->take($request->limit_sub_categories) : $category->subCategories;
+            $products = $request->limit_products ? $category->products->take($request->limit_products) : $category->products;
+            $videos = $request->limit_videos ? $category->videos->take($request->limit_videos) : $category->videos;
+
+            $category['sub_categories'] = $subCategories;
+            $category['products'] = $products;
+            $category['videos'] = $videos;
+
+            return new ShowResource($category);
         } catch (\Throwable $e) {
             return $e->getMessage();
         }
@@ -44,7 +54,7 @@ class CategoryController extends Controller
             $data = $request->validated();
             $category = Category::firstWhere('url', $slug);
             $category->update($data);
-            return new CategoryResource($category);
+            return new ActionResource($category);
         } catch (\Throwable $e) {
             return $e->getMessage();
         }
@@ -55,7 +65,7 @@ class CategoryController extends Controller
         try {
             $category = Category::firstWhere('url', $slug);
             $category->delete();
-            return new CategoryResource($category);
+            return new ActionResource($category);
         } catch (\Throwable $e) {
             return $e->getMessage();
         }
