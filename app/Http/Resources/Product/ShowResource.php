@@ -18,7 +18,7 @@ class ShowResource extends JsonResource
             'id' => $this['id'],
             'name' => $this['name'],
             'img' => $this['img'],
-            'gallery' => $this['gallery'],
+            'gallery' => json_decode($this['gallery'], true),
             'url' => $this['url'],
             'price' => $this['price'],
             'oldPrice' => $this['oldPrice'],

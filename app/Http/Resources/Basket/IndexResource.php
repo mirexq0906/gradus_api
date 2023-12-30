@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Product;
+namespace App\Http\Resources\Basket;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -18,7 +18,7 @@ class IndexResource extends JsonResource
             'id' => $this['id'],
             'name' => $this['name'],
             'img' => $this['img'],
-            'gallery' => json_decode($this['gallery'], true),
+            'gallery' => $this['gallery'],
             'url' => $this['url'],
             'price' => $this['price'],
             'oldPrice' => $this['oldPrice'],

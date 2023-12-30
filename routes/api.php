@@ -37,10 +37,15 @@ Route::post('/videos', [\App\Http\Controllers\VideoController::class, 'store']);
 Route::put('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'update']);
 Route::delete('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'delete']);
 
-Route::delete('/login', [\App\Http\Controllers\AuthController::class, 'login']);
-Route::delete('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 
-Route::middleware('auth:api')->post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+Route::middleware('auth:api')->group(function() {
+    Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::get('/basket', [\App\Http\Controllers\BasketController::class, 'index']);
+    Route::post('/basket', [\App\Http\Controllers\BasketController::class, 'store']);
+    Route::delete('/basket', [\App\Http\Controllers\BasketController::class, 'delete']);
+});
 
 Route::get('/error', function () {
     return response()->json([
