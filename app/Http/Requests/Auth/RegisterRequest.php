@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Video;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UpdateRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,10 +15,12 @@ class UpdateRequest extends FormRequest
     {
         return true;
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json(['error' => 'Ошибка валидации полей'], 422));
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,8 +29,9 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "max:255",
-            "url" => "max:255",
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
         ];
     }
 }

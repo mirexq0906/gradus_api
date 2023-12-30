@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\SubCategory;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UpdateRequest extends FormRequest
 {
@@ -12,6 +14,10 @@ class UpdateRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(['error' => 'Ошибка валидации полей'], 422));
     }
 
     /**

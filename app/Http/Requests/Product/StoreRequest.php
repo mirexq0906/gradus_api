@@ -17,7 +17,7 @@ class StoreRequest extends FormRequest
     }
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json('Ошибка валидации полей', 422));
+        throw new HttpResponseException(response()->json(['error' => 'Ошибка валидации полей'], 422));
     }
     /**
      * Get the validation rules that apply to the request.
