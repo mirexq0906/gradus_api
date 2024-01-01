@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Video;
+namespace App\Http\Requests\Favorite;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreRequest extends FormRequest
+class DeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,10 +15,12 @@ class StoreRequest extends FormRequest
     {
         return true;
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json(['error' => 'Ошибка валидации полей']));
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,10 +29,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|max:255",
-            "img" => "required",
-            "url" => "required|max:255",
-            "category_id" => "required",
+            'product_id' => 'required'
         ];
     }
 }

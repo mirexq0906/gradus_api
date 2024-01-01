@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\Product\IndexRequest;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Http\Resources\Product\IndexResource;
@@ -11,11 +12,12 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(IndexRequest $request)
     {
         try {
+            $limit = $request->limit;
             $products = Product::all();
-            return IndexResource::collection($products);
+            return IndexResource::collection($limit ? $products->take($limit) : $products);
         } catch (\Throwable $e) {
             return response()->json([
                 'error' => $e->getMessage(),

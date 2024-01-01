@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Video;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreRequest extends FormRequest
+class IndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +27,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|max:255",
-            "img" => "required",
-            "url" => "required|max:255",
-            "category_id" => "required",
+            'limit' => 'integer',
         ];
     }
 }

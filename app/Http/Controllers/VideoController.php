@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\Video\IndexRequest;
 use App\Http\Requests\Video\StoreRequest;
 use App\Http\Requests\Video\UpdateRequest;
 use App\Http\Resources\Video\IndexResource;
@@ -10,11 +11,12 @@ use App\Models\Video;
 
 class VideoController extends Controller
 {
-    public function index()
+    public function index(IndexRequest $request)
     {
         try {
+            $limit = $request->limit;
             $videos = Video::all();
-            return IndexResource::collection($videos);
+            return IndexResource::collection($limit ? $videos->take($limit) : $videos);
         } catch (\Throwable $e) {
             return response()->json([
                 'error' => $e->getMessage(),

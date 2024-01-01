@@ -45,6 +45,10 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/basket', [\App\Http\Controllers\BasketController::class, 'index']);
     Route::post('/basket', [\App\Http\Controllers\BasketController::class, 'store']);
     Route::delete('/basket', [\App\Http\Controllers\BasketController::class, 'delete']);
+
+    Route::get('/favorite', [\App\Http\Controllers\FavoriteController::class, 'index']);
+    Route::post('/favorite', [\App\Http\Controllers\FavoriteController::class, 'store']);
+    Route::delete('/favorite', [\App\Http\Controllers\FavoriteController::class, 'delete']);
 });
 
 Route::get('/error', function () {
