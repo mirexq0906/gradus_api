@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Basket;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Favorite;
 use App\Models\Product;
@@ -24,7 +25,10 @@ class DatabaseSeeder extends Seeder
         SubCategory::factory(50)->create();
         Product::factory(200)->create();
         Video::factory(150)->create();
-//        User::factory(10)->create();
+        Blog::factory(150)-> create();
+
+//        User::factory(5)->create();
+
 //        Basket::factory(150)->create();
 //        Favorite::factory(150)->create();
         // \App\Models\User::factory()->create([

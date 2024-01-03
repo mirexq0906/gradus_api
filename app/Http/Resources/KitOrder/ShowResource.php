@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Category;
+namespace App\Http\Resources\KitOrder;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -16,12 +16,10 @@ class ShowResource extends JsonResource
     {
         return [
             'id' => $this['id'],
-            'name' => $this['name'],
-            'url' => $this['url'],
-            'sub_categories' => $this['sub_categories'],
             'products' => $this['products'],
-            'videos' => $this['videos'],
-            'blogs' => $this['blogs'],
+            'phone' => $this['phone'],
+            'fullName' => $this['fullName'],
+            'totalPrice' => $this['totalPrice'],
             'created_at' => $this['created_at'],
             'updated_at' => $this['updated_at'],
         ];

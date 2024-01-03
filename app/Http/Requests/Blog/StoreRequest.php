@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Blog;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ShowRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,12 +15,10 @@ class ShowRequest extends FormRequest
     {
         return true;
     }
-
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json(['error' => 'Ошибка валидации полей']));
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -29,10 +27,12 @@ class ShowRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'limit_sub_categories' => '',
-            'limit_products' => '',
-            'limit_videos' => '',
-            'limit_blogs' => '',
+            "name" => "required|max:255",
+            "url" => "required|max:255",
+            'desc' => "required",
+            'detailed' => "required",
+            "img" => "required",
+            "category_id" => "required|integer",
         ];
     }
 }

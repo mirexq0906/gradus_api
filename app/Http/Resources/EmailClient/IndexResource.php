@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Category;
+namespace App\Http\Resources\EmailClient;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ShowResource extends JsonResource
+class IndexResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,7 @@ class ShowResource extends JsonResource
     {
         return [
             'id' => $this['id'],
-            'name' => $this['name'],
-            'url' => $this['url'],
-            'sub_categories' => $this['sub_categories'],
-            'products' => $this['products'],
-            'videos' => $this['videos'],
-            'blogs' => $this['blogs'],
+            'email' => $this['email'],
             'created_at' => $this['created_at'],
             'updated_at' => $this['updated_at'],
         ];

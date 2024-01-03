@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ShowRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,10 +29,9 @@ class ShowRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'limit_sub_categories' => '',
-            'limit_products' => '',
-            'limit_videos' => '',
-            'limit_blogs' => '',
+            'date' => 'max:255',
+            'phone' => 'max:255',
+            'adress' => 'max:255',
         ];
     }
 }

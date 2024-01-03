@@ -37,11 +37,32 @@ Route::post('/videos', [\App\Http\Controllers\VideoController::class, 'store']);
 Route::put('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'update']);
 Route::delete('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'delete']);
 
+Route::get('/blogs', [\App\Http\Controllers\BlogController::class, 'index']);
+Route::get('/blogs/{blog}', [\App\Http\Controllers\BlogController::class, 'show']);
+Route::post('/blogs', [\App\Http\Controllers\BlogController::class, 'store']);
+Route::put('/blogs/{blog}', [\App\Http\Controllers\BlogController::class, 'update']);
+Route::delete('/blogs/{blog}', [\App\Http\Controllers\BlogController::class, 'delete']);
+
+Route::get('/call_clients', [\App\Http\Controllers\CallClientController::class, 'index']);
+Route::get('/call_clients/{call_client}', [\App\Http\Controllers\CallClientController::class, 'show']);
+Route::post('/call_clients', [\App\Http\Controllers\CallClientController::class, 'store']);
+Route::put('/call_clients/{call_client}', [\App\Http\Controllers\CallClientController::class, 'update']);
+Route::delete('/call_clients/{call_client}', [\App\Http\Controllers\CallClientController::class, 'delete']);
+
+Route::get('/email_clients', [\App\Http\Controllers\EmailClientController::class, 'index']);
+Route::get('/email_clients/{email_client}', [\App\Http\Controllers\EmailClientController::class, 'show']);
+Route::post('/email_clients', [\App\Http\Controllers\EmailClientController::class, 'store']);
+Route::put('/email_clients/{email_client}', [\App\Http\Controllers\EmailClientController::class, 'update']);
+Route::delete('/email_clients/{email_client}', [\App\Http\Controllers\EmailClientController::class, 'delete']);
+
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 
 Route::middleware('auth:api')->group(function() {
     Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::get('/user', [\App\Http\Controllers\AuthController::class, 'show']);
+    Route::put('/user', [\App\Http\Controllers\AuthController::class, 'update']);
+
     Route::get('/basket', [\App\Http\Controllers\BasketController::class, 'index']);
     Route::post('/basket', [\App\Http\Controllers\BasketController::class, 'store']);
     Route::delete('/basket', [\App\Http\Controllers\BasketController::class, 'delete']);
@@ -49,6 +70,18 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/favorite', [\App\Http\Controllers\FavoriteController::class, 'index']);
     Route::post('/favorite', [\App\Http\Controllers\FavoriteController::class, 'store']);
     Route::delete('/favorite', [\App\Http\Controllers\FavoriteController::class, 'delete']);
+
+    Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'index']);
+    Route::get('/orders/{order}', [\App\Http\Controllers\OrderController::class, 'show']);
+    Route::post('/orders', [\App\Http\Controllers\OrderController::class, 'store']);
+    Route::put('/orders/{order}', [\App\Http\Controllers\OrderController::class, 'update']);
+    Route::delete('/orders/{order}', [\App\Http\Controllers\OrderController::class, 'delete']);
+
+    Route::get('/kit_orders', [\App\Http\Controllers\KitOrderController::class, 'index']);
+    Route::get('/kit_orders/{kit_order}', [\App\Http\Controllers\KitOrderController::class, 'show']);
+    Route::post('/kit_orders', [\App\Http\Controllers\KitOrderController::class, 'store']);
+    Route::put('/kit_orders/{kit_order}', [\App\Http\Controllers\KitOrderController::class, 'update']);
+    Route::delete('/kit_orders/{kit_order}', [\App\Http\Controllers\KitOrderController::class, 'delete']);
 });
 
 Route::get('/error', function () {
