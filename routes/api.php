@@ -55,6 +55,17 @@ Route::post('/email_clients', [\App\Http\Controllers\EmailClientController::clas
 Route::put('/email_clients/{email_client}', [\App\Http\Controllers\EmailClientController::class, 'update']);
 Route::delete('/email_clients/{email_client}', [\App\Http\Controllers\EmailClientController::class, 'delete']);
 
+Route::get('/banners', [\App\Http\Controllers\BannerController::class, 'index']);
+Route::get('/banners/{banner}', [\App\Http\Controllers\BannerController::class, 'show']);
+Route::post('/banners', [\App\Http\Controllers\BannerController::class, 'store']);
+Route::put('/banners/{banner}', [\App\Http\Controllers\BannerController::class, 'update']);
+Route::delete('/banners/{banner}', [\App\Http\Controllers\BannerController::class, 'delete']);
+
+Route::get('/week_products', [\App\Http\Controllers\WeekProductController::class, 'index']);
+Route::get('/week_products/{week_product}', [\App\Http\Controllers\WeekProductController::class, 'show']);
+Route::post('/week_products', [\App\Http\Controllers\WeekProductController::class, 'store']);
+Route::delete('/week_products/{week_product}', [\App\Http\Controllers\WeekProductController::class, 'delete']);
+
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 

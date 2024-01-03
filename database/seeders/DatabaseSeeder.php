@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Banner;
 use App\Models\Basket;
 use App\Models\Blog;
 use App\Models\Category;
@@ -26,7 +27,7 @@ class DatabaseSeeder extends Seeder
         Product::factory(200)->create();
         Video::factory(150)->create();
         Blog::factory(150)-> create();
-
+        Banner::factory(5)->create();
 //        User::factory(5)->create();
 
 //        Basket::factory(150)->create();
