@@ -31,6 +31,7 @@ class StoreRequest extends FormRequest
             "img" => "required",
             "gallery" => "required",
             "url" => "required|max:255",
+            "path" => "required",
             "price" => "required",
             "oldPrice" => "required",
             "desc" => "required",

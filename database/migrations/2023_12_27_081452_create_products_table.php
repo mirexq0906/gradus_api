@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('img');
             $table->text('gallery');
             $table->string('url')->unique();
+            $table->string('path')->unique();
             $table->integer('price');
             $table->integer('oldPrice');
             $table->text('desc');

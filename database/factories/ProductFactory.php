@@ -18,16 +18,20 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $subCategory = SubCategory::all()->random();
+        $category = Category::all()->random();
+        $url = fake()->unique()->slug(3);
         return [
             'name' => fake()->text(15),
             'img' => fake()->imageUrl(),
             'gallery' => json_encode($this->getGallery()),
-            'url' => fake()->unique()->slug(1),
+            'url' => $url,
+            'path' => '/' . $category->url . '/' . $subCategory->url . '/' . $url,
             'price' => random_int(1000, 10000),
             'oldPrice' => random_int(1000, 10000),
             'desc' => fake()->text(),
-            'subCategory_id' => SubCategory::all()->random()->id,
-            'category_id' => Category::all()->random()->id
+            'subCategory_id' => $subCategory->id,
+            'category_id' => $category->id
         ];
     }
     public function getGallery():array

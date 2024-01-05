@@ -20,6 +20,7 @@ class ShowResource extends JsonResource
             'img' => $this['img'],
             'gallery' => json_decode($this['gallery'], true),
             'url' => $this['url'],
+            'path' => $this['path'],
             'price' => $this['price'],
             'oldPrice' => $this['oldPrice'],
             'desc' => $this['desc'],

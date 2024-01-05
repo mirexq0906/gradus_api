@@ -20,7 +20,7 @@ class SubCategoryFactory extends Factory
         return [
             'name' => fake()->text(15),
             'img' => fake()->imageUrl(),
-            'url' => fake()->unique()->slug(1),
+            'url' => fake()->unique()->slug(3),
             'category_id' => Category::all()->random()->id
         ];
     }

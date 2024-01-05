@@ -29,7 +29,15 @@ class UpdateRequest extends FormRequest
     {
         return [
             "name" => "max:255",
+            "img" => "",
+            "gallery" => "",
             "url" => "max:255",
+            "path" => "",
+            "price" => "",
+            "oldPrice" => "",
+            "desc" => "",
+            "subCategory_id" => "",
+            "category_id" => "",
         ];
     }
 }
