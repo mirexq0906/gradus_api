@@ -29,12 +29,12 @@ Route::delete('/sub_categories/{sub_category}', [\App\Http\Controllers\SubCatego
 Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index']);
 Route::post('/products', [\App\Http\Controllers\ProductController::class, 'store']);
 Route::get('/products/{product}', [\App\Http\Controllers\ProductController::class, 'show']);
-Route::put('/products/{product}', [\App\Http\Controllers\ProductController::class, 'update']);
+Route::post('/products/{product}', [\App\Http\Controllers\ProductController::class, 'update']);
 Route::delete('/products/{product}', [\App\Http\Controllers\ProductController::class, 'delete']);
 
 Route::get('/videos', [\App\Http\Controllers\VideoController::class, 'index']);
 Route::post('/videos', [\App\Http\Controllers\VideoController::class, 'store']);
-Route::put('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'update']);
+Route::post('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'update']);
 Route::delete('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'delete']);
 
 Route::get('/blogs', [\App\Http\Controllers\BlogController::class, 'index']);

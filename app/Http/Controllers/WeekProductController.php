@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\DataRequest;
 use App\Http\Requests\WeekProduct\DeleteRequest;
 use App\Http\Requests\WeekProduct\StoreRequest;
 use App\Http\Resources\WeekProduct\IndexResource;
@@ -11,9 +12,10 @@ use App\Models\WeekProduct;
 
 class WeekProductController extends Controller
 {
-    public function index()
+    public function index(DataRequest $request)
     {
         try {
+            $data = $request->all();
             $weekProducts = WeekProduct::with(['product'])->get();
             return IndexResource::collection($weekProducts->pluck('product'));
         } catch (\Throwable $e) {

@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\User;
 use App\Models\Video;
+use App\Models\WeekProduct;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
         Video::factory(150)->create();
         Blog::factory(150)-> create();
         Banner::factory(5)->create();
+        WeekProduct::factory(3)->create();
 //        User::factory(5)->create();
 
 //        Basket::factory(150)->create();

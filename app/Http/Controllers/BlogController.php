@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\Blog\IndexRequest;
 use App\Http\Requests\Blog\StoreRequest;
 use App\Http\Requests\Blog\UpdateRequest;
+use App\Http\Requests\DataRequest;
 use App\Http\Resources\Blog\IndexResource;
 use App\Http\Resources\Blog\ShowResource;
 use App\Models\Blog;
 
 class BlogController extends Controller
 {
-    public function index(IndexRequest $request)
+    public function index(DataRequest $request)
     {
         try {
-            $limit = $request->limit;
-            $videos = Blog::all();
-            return IndexResource::collection($limit ? $videos->take($limit) : $videos);
+            $data = $request->all();
+            $blogs =  $this->dataProcessor->processData($data, Blog::query());
+            return IndexResource::collection($blogs);
         } catch (\Throwable $e) {
             return response()->json([
                 'error' => $e->getMessage(),

@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CallClient\StoreRequest;
 use App\Http\Requests\CallClient\UpdateRequest;
+use App\Http\Requests\DataRequest;
 use App\Http\Resources\CallClient\IndexResource;
 use App\Http\Resources\CallClient\ShowResource;
 use App\Models\CallClient;
 
 class CallClientController extends Controller
 {
-    public function index()
+    public function index(DataRequest $request)
     {
         try {
-            $callClients = CallClient::all();
+            $data = $request->all();
+            $callClients =  $this->dataProcessor->processData($data, CallClient::query());
             return IndexResource::collection($callClients);
         } catch (\Throwable $e) {
             return response()->json([

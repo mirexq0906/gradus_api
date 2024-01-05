@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DataRequest;
 use App\Http\Requests\SubCategory\StoreRequest;
 use App\Http\Requests\SubCategory\UpdateRequest;
 use App\Http\Resources\SubCategory\IndexResource;
@@ -10,10 +11,11 @@ use App\Models\SubCategory;
 
 class SubCategoryController extends Controller
 {
-    public function index()
+    public function index(DataRequest $request)
     {
         try {
-            $subCategories = SubCategory::all();
+            $data = $request->all();
+            $subCategories = $this->dataProcessor->processData($data, SubCategory::query());
             return IndexResource::collection($subCategories);
         } catch (\Throwable $e) {
             return response()->json([
@@ -22,12 +24,12 @@ class SubCategoryController extends Controller
         }
     }
 
-    public function show(string $slug)
+    public function show(DataRequest $request,string $slug)
     {
         try {
-            $subCategory = SubCategory::firstWhere('url', $slug);
-            $products = $subCategory->products;
-            $subCategory['products'] = $products;
+            $data = $request->all();
+            $subCategory = SubCategory::with('products')->firstWhere('url', $slug);
+            $subCategory['products'] = $this->dataProcessor->processData($data, $subCategory->products());
             return new ShowResource($subCategory);
         } catch (\Throwable $e) {
             return response()->json([

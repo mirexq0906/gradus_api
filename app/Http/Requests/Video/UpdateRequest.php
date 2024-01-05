@@ -29,6 +29,8 @@ class UpdateRequest extends FormRequest
         return [
             "name" => "max:255",
             "url" => "max:255",
+            "img" => "",
+            "category_id" => "",
         ];
     }
 }

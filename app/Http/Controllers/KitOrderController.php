@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\DataRequest;
 use App\Http\Requests\KitOrder\StoreRequest;
 use App\Http\Requests\KitOrder\UpdateRequest;
 use App\Http\Resources\KitOrder\IndexResource;
@@ -11,10 +12,11 @@ use App\Models\KitOrder;
 
 class KitOrderController extends Controller
 {
-    public function index()
+    public function index(DataRequest $request)
     {
         try {
-            $orders = KitOrder::all();
+            $data = $request->all();
+            $orders =  $this->dataProcessor->processData($data, KitOrder::query());
             return IndexResource::collection($orders);
         } catch (\Throwable $e) {
             return response()->json([

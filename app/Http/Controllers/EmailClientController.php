@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\DataRequest;
 use App\Http\Requests\EmailClient\StoreRequest;
 use App\Http\Requests\EmailClient\UpdateRequest;
 use App\Http\Resources\EmailClient\IndexResource;
@@ -11,10 +12,11 @@ use App\Models\EmailClient;
 
 class EmailClientController extends Controller
 {
-    public function index()
+    public function index(DataRequest $request)
     {
         try {
-            $emailClients = EmailClient::all();
+            $data = $request->all();
+            $emailClients =  $this->dataProcessor->processData($data, EmailClient::query());
             return IndexResource::collection($emailClients);
         } catch (\Throwable $e) {
             return response()->json([

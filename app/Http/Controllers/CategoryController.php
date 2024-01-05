@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Category\ShowRequest;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
+use App\Http\Requests\DataRequest;
 use App\Http\Resources\Category\IndexResource;
 use App\Http\Resources\Category\ShowResource;
 use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(DataRequest $request)
     {
         try {
-            $categories = Category::all();
+            $data = $request->all();
+            $categories =  $this->dataProcessor->processData($data, Category::query());
             return IndexResource::collection($categories);
         } catch (\Throwable $e) {
             return response()->json([

@@ -3,21 +3,22 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\Product\IndexRequest;
+use App\Http\Requests\DataRequest;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Http\Resources\Product\IndexResource;
 use App\Http\Resources\Product\ShowResource;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function index(IndexRequest $request)
+    public function index(DataRequest $request)
     {
         try {
-            $limit = $request->limit;
-            $products = Product::all();
-            return IndexResource::collection($limit ? $products->take($limit) : $products);
+            $data = $request->all();
+            $products =  $this->dataProcessor->processData($data, Product::query());
+            return IndexResource::collection($products);
         } catch (\Throwable $e) {
             return response()->json([
                 'error' => $e->getMessage(),
@@ -29,6 +30,12 @@ class ProductController extends Controller
     {
         try {
             $data = $request->all();
+            if ($request->hasFile('img')) {
+                $data['img'] = $this->imageLoader->oneLoadImage($request->file('img'));
+            }
+            if($request->hasFile('gallery')) {
+                $data['gallery'] = $this->imageLoader->manyLoadImage($request->file('gallery'));
+            }
             Product::create($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {
@@ -55,6 +62,12 @@ class ProductController extends Controller
         try {
             $data = $request->all();
             $product = Product::firstWhere('url', $slug);
+            if ($request->hasFile('img')) {
+                $data['img'] = $this->imageLoader->oneLoadImage($request->file('img'), $product->img);
+            }
+            if($request->hasFile('gallery')) {
+                $data['gallery'] = $this->imageLoader->manyLoadImage($request->file('gallery'), $product->gallery);
+            }
             $product->update($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {

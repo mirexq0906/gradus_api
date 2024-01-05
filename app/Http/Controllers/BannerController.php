@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Banner\StoreRequest;
 use App\Http\Requests\Banner\UpdateRequest;
+use App\Http\Requests\DataRequest;
 use App\Http\Resources\Banner\IndexResource;
 use App\Http\Resources\Banner\ShowResource;
 use App\Models\Banner;
 
 class BannerController extends Controller
 {
-    public function index()
+    public function index(DataRequest $request)
     {
         try {
-            $banners = Banner::all();
+            $data = $request->all();
+            $banners =  $this->dataProcessor->processData($data, Banner::query());
             return IndexResource::collection($banners);
         } catch (\Throwable $e) {
             return response()->json([

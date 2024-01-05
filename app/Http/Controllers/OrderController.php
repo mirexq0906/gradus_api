@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\DataRequest;
 use App\Http\Requests\Order\StoreRequest;
 use App\Http\Requests\Order\UpdateRequest;
 use App\Http\Resources\Order\IndexResource;
@@ -11,10 +12,11 @@ use App\Models\Order;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(DataRequest $request)
     {
         try {
-            $orders = Order::all();
+            $data = $request->all();
+            $orders =  $this->dataProcessor->processData($data, Order::query());
             return IndexResource::collection($orders);
         } catch (\Throwable $e) {
             return response()->json([
