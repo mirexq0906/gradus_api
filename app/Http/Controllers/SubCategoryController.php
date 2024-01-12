@@ -42,6 +42,9 @@ class SubCategoryController extends Controller
     {
         try {
             $data = $request->all();
+            if ($request->hasFile('img')) {
+                $data['img'] = $this->imageLoader->oneLoadImage($request->file('img'));
+            }
             SubCategory::create($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {
@@ -56,6 +59,9 @@ class SubCategoryController extends Controller
         try {
             $data = $request->all();
             $subCategory = SubCategory::firstWhere('url', $slug);
+            if ($request->hasFile('img')) {
+                $data['img'] = $this->imageLoader->oneLoadImage($data['img'], $subCategory->img);
+            }
             $subCategory->update($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {

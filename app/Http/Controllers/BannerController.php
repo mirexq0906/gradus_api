@@ -40,6 +40,9 @@ class BannerController extends Controller
     {
         try {
             $data = $request->all();
+            if ($request->hasFile('img')) {
+                $data['img'] = $this->imageLoader->oneLoadImage($request->file('img'));
+            }
             Banner::create($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {
@@ -53,6 +56,9 @@ class BannerController extends Controller
     {
         try {
             $data = $request->all();
+            if ($request->hasFile('img')) {
+                $data['img'] = $this->imageLoader->oneLoadImage($request->file('img'), $banner->img);
+            }
             $banner->update($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {

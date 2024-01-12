@@ -23,7 +23,7 @@ Route::delete('/categories/{category}', [\App\Http\Controllers\CategoryControlle
 Route::get('/sub_categories', [\App\Http\Controllers\SubCategoryController::class, 'index']);
 Route::post('/sub_categories', [\App\Http\Controllers\SubCategoryController::class, 'store']);
 Route::get('/sub_categories/{sub_category}', [\App\Http\Controllers\SubCategoryController::class, 'show']);
-Route::put('/sub_categories/{sub_category}', [\App\Http\Controllers\SubCategoryController::class, 'update']);
+Route::post('/sub_categories/{sub_category}', [\App\Http\Controllers\SubCategoryController::class, 'update']);
 Route::delete('/sub_categories/{sub_category}', [\App\Http\Controllers\SubCategoryController::class, 'delete']);
 
 Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index']);
@@ -33,6 +33,7 @@ Route::post('/products/{product}', [\App\Http\Controllers\ProductController::cla
 Route::delete('/products/{product}', [\App\Http\Controllers\ProductController::class, 'delete']);
 
 Route::get('/videos', [\App\Http\Controllers\VideoController::class, 'index']);
+Route::get('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'show']);
 Route::post('/videos', [\App\Http\Controllers\VideoController::class, 'store']);
 Route::post('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'update']);
 Route::delete('/videos/{video}', [\App\Http\Controllers\VideoController::class, 'delete']);
@@ -40,7 +41,7 @@ Route::delete('/videos/{video}', [\App\Http\Controllers\VideoController::class, 
 Route::get('/blogs', [\App\Http\Controllers\BlogController::class, 'index']);
 Route::get('/blogs/{blog}', [\App\Http\Controllers\BlogController::class, 'show']);
 Route::post('/blogs', [\App\Http\Controllers\BlogController::class, 'store']);
-Route::put('/blogs/{blog}', [\App\Http\Controllers\BlogController::class, 'update']);
+Route::post('/blogs/{blog}', [\App\Http\Controllers\BlogController::class, 'update']);
 Route::delete('/blogs/{blog}', [\App\Http\Controllers\BlogController::class, 'delete']);
 
 Route::get('/call_clients', [\App\Http\Controllers\CallClientController::class, 'index']);
@@ -58,7 +59,7 @@ Route::delete('/email_clients/{email_client}', [\App\Http\Controllers\EmailClien
 Route::get('/banners', [\App\Http\Controllers\BannerController::class, 'index']);
 Route::get('/banners/{banner}', [\App\Http\Controllers\BannerController::class, 'show']);
 Route::post('/banners', [\App\Http\Controllers\BannerController::class, 'store']);
-Route::put('/banners/{banner}', [\App\Http\Controllers\BannerController::class, 'update']);
+Route::post('/banners/{banner}', [\App\Http\Controllers\BannerController::class, 'update']);
 Route::delete('/banners/{banner}', [\App\Http\Controllers\BannerController::class, 'delete']);
 
 Route::get('/week_products', [\App\Http\Controllers\WeekProductController::class, 'index']);

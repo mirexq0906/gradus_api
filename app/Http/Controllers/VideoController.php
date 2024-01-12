@@ -7,6 +7,7 @@ use App\Http\Requests\DataRequest;
 use App\Http\Requests\Video\StoreRequest;
 use App\Http\Requests\Video\UpdateRequest;
 use App\Http\Resources\Video\IndexResource;
+use App\Http\Resources\Video\ShowResource;
 use App\Models\Video;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,6 +19,17 @@ class VideoController extends Controller
             $data = $request->all();
             $videos =  $this->dataProcessor->processData($data, Video::query());
             return IndexResource::collection($videos);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function show(Video $video)
+    {
+        try {
+            return new ShowResource($video);
         } catch (\Throwable $e) {
             return response()->json([
                 'error' => $e->getMessage(),

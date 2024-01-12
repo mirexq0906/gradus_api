@@ -41,6 +41,9 @@ class BlogController extends Controller
     {
         try {
             $data = $request->all();
+            if ($request->hasFile('img')) {
+                $data['img'] = $this->imageLoader->oneLoadImage($request->file('img'));
+            }
             Blog::create($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {
@@ -55,6 +58,9 @@ class BlogController extends Controller
         try {
             $data = $request->all();
             $blog = Blog::where('url', $slug)->first();
+            if ($request->hasFile('img')) {
+                $data['img'] = $this->imageLoader->oneLoadImage($request->file('img'), $blog->img);
+            }
             $blog->update($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {
