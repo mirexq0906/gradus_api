@@ -25,10 +25,11 @@ class WeekProductController extends Controller
         }
     }
 
-    public function show(WeekProduct $weekProduct)
+    public function show($id)
     {
         try {
-            return  new ShowResource($weekProduct->product);
+            $week_product = WeekProduct::where('product_id', $id)->first();
+            return  new ShowResource($week_product->product);
         } catch (\Throwable $e) {
             return response()->json([
                 'error' => $e->getMessage(),
@@ -58,10 +59,11 @@ class WeekProductController extends Controller
         }
     }
 
-    public function delete(WeekProduct $weekProduct)
+    public function delete($id)
     {
         try {
-            $weekProduct->delete();
+            $week_product = WeekProduct::where('product_id', $id)->first();
+            $week_product->delete();
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {
             return response()->json([
