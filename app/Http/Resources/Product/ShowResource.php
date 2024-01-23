@@ -25,6 +25,8 @@ class ShowResource extends JsonResource
             'oldPrice' => $this['oldPrice'],
             'desc' => $this['desc'],
             'subCategory_id' => $this['subCategory_id'],
+            'rating' => $this['rating'],
+            'reviews' => $this['reviews'],
             'category_id' => $this['category_id'],
             'created_at' => $this['created_at'],
             'updated_at' => $this['updated_at'],

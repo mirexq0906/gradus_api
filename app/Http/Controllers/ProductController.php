@@ -17,7 +17,11 @@ class ProductController extends Controller
     {
         try {
             $data = $request->all();
-            $products =  $this->dataProcessor->processData($data, Product::query());
+            $productsQuery = Product::query()->with('reviews');
+            $products =  $this->dataProcessor->processData($data, $productsQuery);
+            foreach ($products as $product) {
+                $product['rating'] = $this->countRating($product->reviews);
+            }
             return IndexResource::collection($products);
         } catch (\Throwable $e) {
             return response()->json([
@@ -48,7 +52,11 @@ class ProductController extends Controller
     public function show(string $slug)
     {
         try {
-            $product = Product::firstWhere('url', $slug);
+            $product = Product::with('reviews')->firstWhere('url', $slug);
+            foreach ($product->reviews as $review) {
+                unset($review->user_id, $review->product_id);
+            }
+            $product['rating'] = $this->countRating($product->reviews);
             return new ShowResource($product);
         } catch (\Throwable $e) {
             return response()->json([
@@ -88,5 +96,19 @@ class ProductController extends Controller
                 'error' => $e->getMessage(),
             ]);
         }
+    }
+
+    public function countRating($arr)
+    {
+        $totalRating = 0;
+        $totalReviews = count($arr);
+
+        foreach ($arr as $review) {
+            $totalRating += $review['rating'];
+        }
+
+        $averageRating = $totalReviews > 0 ? $totalRating / $totalReviews : 0;
+
+        return $averageRating;
     }
 }

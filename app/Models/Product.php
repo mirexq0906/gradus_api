@@ -12,4 +12,9 @@ class Product extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'product_id', 'id');
+    }
 }

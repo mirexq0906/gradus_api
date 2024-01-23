@@ -24,6 +24,7 @@ class IndexResource extends JsonResource
             'price' => $this['price'],
             'oldPrice' => $this['oldPrice'],
             'desc' => $this['desc'],
+            'rating' => $this['rating'],
             'subCategory_id' => $this['subCategory_id'],
             'category_id' => $this['category_id'],
             'created_at' => $this['created_at'],

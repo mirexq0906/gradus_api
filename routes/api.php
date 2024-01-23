@@ -94,6 +94,9 @@ Route::middleware('auth:api')->group(function() {
     Route::post('/kit_orders', [\App\Http\Controllers\KitOrderController::class, 'store']);
     Route::put('/kit_orders/{kit_order}', [\App\Http\Controllers\KitOrderController::class, 'update']);
     Route::delete('/kit_orders/{kit_order}', [\App\Http\Controllers\KitOrderController::class, 'delete']);
+
+    Route::post('/reviews', [\App\Http\Controllers\ReviewController::class, 'store']);
+
 });
 
 Route::get('/error', function () {
