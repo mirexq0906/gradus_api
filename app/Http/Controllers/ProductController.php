@@ -33,13 +33,11 @@ class ProductController extends Controller
     public function store(StoreRequest $request)
     {
         try {
-            $data = $request->all();
+            $data = $request->validated();
             if ($request->hasFile('img')) {
                 $data['img'] = $this->imageLoader->oneLoadImage($request->file('img'));
             }
-            if($request->hasFile('gallery')) {
-                $data['gallery'] = $this->imageLoader->manyLoadImage($request->file('gallery'));
-            }
+            $data['gallery'] = $this->imageLoader->manyLoadImage($request->file('gallery'));
             Product::create($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {
