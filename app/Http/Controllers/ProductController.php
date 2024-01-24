@@ -37,7 +37,7 @@ class ProductController extends Controller
             if ($request->hasFile('img')) {
                 $data['img'] = $this->imageLoader->oneLoadImage($request->file('img'));
             }
-            $data['gallery'] = $this->imageLoader->manyLoadImage($request->file('gallery'));
+            $data['gallery'] = $this->imageLoader->manyLoadImage($data['gallery']);
             Product::create($data);
             return response()->json(['message' => 'Успешно']);
         } catch (\Throwable $e) {
