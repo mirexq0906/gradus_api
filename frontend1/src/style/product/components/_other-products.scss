@@ -1,0 +1,19 @@
+.other-products {
+  padding-top: 80px;
+  padding-bottom: 150px;
+  &__heading {
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 40px;
+  }
+  .swiper {
+    overflow: visible;
+  }
+  .swiper-slide {
+    width: 408px;
+    @media(max-width:575px) {
+      width: 254px;
+    }
+  }
+}

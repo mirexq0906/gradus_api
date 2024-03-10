@@ -1,0 +1,18 @@
+.order {
+    padding-top: 40px;
+    padding-bottom: 70px;
+    line-height: 25px;
+    &__info-heading {
+        margin: 40px 0px;
+    }
+    &__info-list {
+        margin-bottom: 40px;
+        margin-left: 20px;
+    }
+    &__info-item {
+        margin-bottom: 15px;
+    }
+    &__info-desc {
+        margin: 20px 0px;
+    }
+}

@@ -1,0 +1,120 @@
+.about-product {
+  padding-top: 50px;
+  &__list-name {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #dbdbdb;
+  }
+  &__item-name {
+    padding: 10px;
+    font-size: 20px;
+    color: #686868;
+  }
+  &__item-name.active {
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-color: #dbdbdb;
+    border-radius: 1px;
+    color: #323232;
+  }
+  &__row {
+    display: flex;
+    gap: 30px;
+    max-width: 1574px;
+    align-items: flex-start;
+  }
+  &__content {
+    flex-grow: 1;
+  }
+  &__kit {
+    padding: 20px;
+    width: 407px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: rgba(238, 236, 11, 1);
+    @media(max-width:1199px) {
+      display: none;
+    }
+    &-heading {
+      text-align: center;
+      font-size: 28px;
+      line-height: 33px;
+    }
+    &-img {
+      max-width: 183px;
+      margin: 0 auto;
+    }
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      height: 54px;
+      width: 100%;
+      max-width: 250px;
+      border-radius: 15px;
+      margin: 20px auto 0 auto;
+      font-size: 20px;
+    }
+  }
+  .product-content {
+    display: none;
+    p {
+      margin: 10px 0;
+      line-height: 25px;
+    }
+    img {
+      margin: 20px 0;
+    }
+    ul {
+      margin: 10px 0 10px 30px;
+      list-style-type: disc;
+    }
+    li {
+      line-height: 25px;
+    }
+    li:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  
+
+  .product-delivery {
+    display: none;
+    padding-top: 50px;
+    &__item {
+      max-width: 710px;
+    }
+    &__item:not(:last-child) {
+      margin-bottom: 30px;
+    }
+    p {
+      line-height: 25px;
+    }
+    li {
+      position: relative;
+      padding-left: 10px;
+      line-height: 25px;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 11px;
+        border-radius: 50%;
+        width: 4px;
+        height: 4px;
+        background-color: #323232;
+      }
+    }
+    a {
+      line-height: 25px;
+      text-decoration: underline;
+    }
+  }
+
+  
+  .product-content.active,
+  .product-delivery.active {
+    display: block;
+  }
+}

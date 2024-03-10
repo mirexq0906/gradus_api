@@ -1,0 +1,206 @@
+.footer {
+  background: #323232;
+  padding: 80px 0 50px 0;
+  @media (max-width: 991px) {
+    padding-top: 50px;
+  }
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 20% 17% 17% 22% 24%;
+    grid-template-rows: auto;
+    @media (max-width: 1549px) {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px 0;
+      text-align: center;
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr 1fr;
+      text-align: left;
+    }
+  }
+  &__logo-wrapper {
+    grid-row: 1/4;
+    grid-column: 1/2;
+    margin-top: -14px;
+    @media (max-width: 1549px) {
+      grid-row: 1/2;
+      grid-column: 1/4;
+    }
+    @media (max-width: 767px) {
+      text-align: center;
+      grid-row: 1/2;
+      grid-column: 1/3;
+    }
+    img {
+      @media (max-width: 991px) {
+        width: 150px;
+      }
+      @media(max-width:575px) {
+        width: 120px;
+      }
+    }
+  }
+  &__list-company {
+    grid-row: 1/4;
+    grid-column: 2/3;
+    @media (max-width: 1549px) {
+      grid-row: 2/3;
+      grid-column: 1/2;
+    }
+    @media (max-width: 767px) {
+      grid-row: 2/3;
+      grid-column: 1/2;
+    }
+  }
+  &__list-buyer {
+    grid-row: 1/4;
+    grid-column: 3/4;
+    @media (max-width: 1549px) {
+      grid-row: 2/3;
+      grid-column: 2/3;
+    }
+    @media (max-width: 767px) {
+      grid-row: 3/4;
+      grid-column: 1/2;
+    }
+  }
+  &__list-opt {
+    grid-row: 1/2;
+    grid-column: 4/5;
+    @media (max-width: 1549px) {
+      grid-row: 2/3;
+      grid-column: 3/4;
+    }
+    @media (max-width: 767px) {
+      grid-row: 2/3;
+      grid-column: 2/3;
+    }
+  }
+  &__list-business {
+    grid-row: 2/3;
+    grid-column: 4/5;
+    margin-top: 15px;
+    @media (max-width: 1549px) {
+      grid-row: 3/4;
+      grid-column: 3/4;
+    }
+    @media (max-width: 767px) {
+      grid-row: 3/4;
+      grid-column: 2/3;
+    }
+  }
+  &__list-market {
+    grid-row: 1/2;
+    grid-column: 5/6;
+    margin-bottom: 37px;
+    @media (max-width: 1549px) {
+      justify-self: center;
+      grid-row: 4/5;
+      grid-column: 1/4;
+    }
+  }
+  &__list-social {
+    grid-row: 2/3;
+    grid-column: 5/6;
+    margin-bottom: 37px;
+    @media (max-width: 1549px) {
+      justify-self: center;
+      grid-row: 5/6;
+      grid-column: 1/4;
+      text-align: center;
+    }
+  }
+  &__list-card {
+    grid-row: 3/4;
+    grid-column: 5/6;
+    @media (max-width: 1549px) {
+      justify-self: center;
+      grid-row: 6/7;
+      grid-column: 1/4;
+    }
+  }
+  &__copyright {
+    grid-row: 5/6;
+    grid-column: 1/6;
+    @media (max-width: 1549px) {
+      justify-self: center;
+      grid-row: 7/8;
+      grid-column: 1/4;
+    }
+  }
+  &__link-company, &__link-buyer, &__link-opt, &__link-business {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    color: #fff;
+    font-size: 18px;
+    @media (max-width: 767px) {
+      font-size: 15px;
+    }
+  }
+  &__item-company:not(:last-child), &__item-buyer:not(:last-child), &__item-opt:not(:last-child), &__item-business:not(:last-child) {
+    margin-bottom: 17px;
+  }
+  &__heading-company, &__heading-buyer, &__heading-opt, &__heading-business {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration-line: underline;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    @media (max-width: 767px) {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  }
+  &__link-market:not(:last-child)  {
+    margin-right: 15px;
+  }
+  &__link-social:not(:last-child) {
+    margin-right: 20px;
+    @media (max-width: 575px) {
+      margin-right: 9px;
+    }
+  }
+  &__link-social {
+    @media (max-width: 575px) {
+      img {
+        width: 50px;
+      }
+    }
+  }
+  &__link-card:not(:last-child) {
+    margin-right: 5px;
+  }
+  &__link-card {
+    @media (max-width: 575px) {
+      img {
+        width: 90px;
+      }
+    }
+  }
+  &__heading-market, &__heading-social, &__heading-card {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  &__copyright {
+    font-family: 'Montserrat';
+    color: #fff;
+    font-size: 18px;
+    line-height: 25px;
+    color: #DBDBDB;
+    margin-top: 85px;
+    max-width: 1000px;
+    @media (max-width: 991px) {
+      font-size: 16px;
+      margin-top: 40px;
+    }
+    @media(max-width:575px) {
+      font-size: 14px;
+      margin-top: 20px;
+    }
+  }
+}

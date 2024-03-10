@@ -1,0 +1,18 @@
+.popular-products {
+  padding-top: 100px;
+  @media (max-width: 991px) {
+    padding-top: 40px;
+  }
+  &__heading {
+    margin-bottom: 30px;
+  }
+  .swiper {
+    overflow: visible;
+  }
+  .swiper-slide {
+    width: 408px;
+    @media(max-width:575px) {
+      width: 254px;
+    }
+  }
+}

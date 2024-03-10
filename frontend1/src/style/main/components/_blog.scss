@@ -1,0 +1,21 @@
+.blog {
+  padding-top: 70px;
+  @media (max-width: 991px) {
+    padding-top: 40px;
+  }
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .swiper {
+    overflow: visible;
+  }
+  .swiper-slide {
+    width: 407px;
+    @media(max-width: 575px) {
+      width: 230px;
+    }
+  }
+}

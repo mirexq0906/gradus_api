@@ -1,0 +1,454 @@
+
+.account {
+  padding: 100px 0;
+}
+.account__container {
+  max-width: 1490px;
+}
+.account__heading {
+  font-size: 35px;
+  line-height: 40px;
+  margin-bottom: 30px;
+}
+.account__row-info {
+  display: flex;
+  gap: 30px;
+}
+.account__info-left,
+.account__info-right {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+.account__info-left {
+  max-width: 262px;
+  width: 100%;
+  padding: 35px 25px;
+}
+.account__info-right {
+  max-width: 1136px;
+  width: 100%;
+}
+.account__info-person {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.account__info-person span {
+  max-width: 128px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+}
+.account__info-list {
+  font-size: 20px;
+  line-height: 25px;
+}
+.account__info-list li:not(:last-child) {
+  margin-bottom: 20px;
+}
+.account__info-bonus {
+  font-size: 20px;
+  line-height: 25px;
+  margin-top: 30px;
+}
+.account__info-bonus span {
+  font-size: 35px;
+  line-height: 40px;
+  display: block;
+  margin-top: 10px;
+}
+.account__info-right {
+  padding: 50px;
+}
+.account__info-heading {
+  font-size: 30px;
+  line-height: 25px;
+  color: #686868;
+}
+.account__info-row {
+  display: flex;
+  gap: 30px;
+}
+.account__form-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.account__info-form {
+  flex: 1 0 auto;
+  margin-top: 30px;
+}
+.account__input-name,
+.account__input-city,
+.account__input-phone,
+.account__input-date {
+  width: 357px;
+  max-width: 100%;
+  font-size: 20px;
+  line-height: 1;
+  color: #323232;
+  border: 2px solid #dbdbdb;
+  border-radius: 5px;
+  height: 45px;
+  padding: 0 30px;
+  background: none;
+  flex: 0 0 auto;
+}
+.account__input-name::-webkit-input-placeholder,
+.account__input-phone::-webkit-input-placeholder,
+.account__input-city::-webkit-input-placeholder {
+  color: #323232;
+}
+.account__input-name::-moz-placeholder,
+.account__input-phone::-moz-placeholder,
+.account__input-city::-moz-placeholder {
+  color: #323232;
+}
+
+.account__input-date::-webkit-input-placeholder {
+  color: #686868;
+}
+.account__input-date::-moz-placeholder {
+  color: #686868;
+}
+
+.account__input-btn {
+  background: #eeec0b;
+  border-radius: 5px;
+  font-size: 20px;
+  line-height: 1;
+  max-width: 143px;
+  width: 100%;
+  height: 45px;
+  margin-top: 40px;
+}
+.account__info-setting {
+  margin-top: 10px;
+  margin-left: 27px;
+}
+.account__info-setting li:not(:last-child) {
+  margin-bottom: 15px;
+}
+.account__info-setting button {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+  background: none;
+  border: none;
+}
+.account__form-tooltip {
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+}
+.account__form-tooltip svg {
+  display: block;
+}
+.account__form-popup {
+  position: absolute;
+  display: none;
+  left: -32px;
+  bottom: calc(100% + 28px);
+  width: 407px;
+  padding: 20px;
+  background: #323232;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 25px;
+}
+.account__form-popup::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 22px;
+  height: 27px;
+  top: 100%;
+  left: 30px;
+}
+.account__row-order {
+  margin-top: 30px;
+  gap: 30px;
+  display: flex;
+  align-items: flex-start;
+}
+.account__order-left {
+  width: 100%;
+  background: #f5f5f5;
+  border-radius: 10px;
+  padding: 48px;
+}
+.account__order-heading {
+  font-size: 30px;
+  line-height: 1;
+  color: #686868;
+}
+.account__order-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.account__order-watch {
+  position: relative;
+  padding-right: 13px;
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+}
+.account__order-watch svg {
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+.account__order-list {
+  margin-top: 30px;
+}
+.account__order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+  border-radius: 10px;
+}
+.account__order-item:nth-child(2n - 1) {
+  background: rgba(219, 219, 219, 0.5);
+}
+.account__order-item div {
+  display: flex;
+  align-items: center;
+}
+.account__order-status {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.account__order-item .delivery {
+  background: #eeec0b;
+}
+.account__order-item .cancel {
+  background: #ff0000;
+}
+.account__order-item .success {
+  background: #54ad2a;
+}
+.account__order-number {
+  font-size: 16px;
+  line-height: 1;
+  text-decoration-line: underline;
+  margin-right: 50px;
+  min-width: 205px;
+  max-width: 205px;
+}
+.account__order-price {
+  font-size: 18px;
+  line-height: 1;
+}
+
+@media (max-width: 1549px) {
+  .account__info-row {
+    flex-wrap: wrap;
+  }
+  .account__input-name,
+  .account__input-city,
+  .account__input-phone,
+  .account__input-date {
+    width: 345px;
+  }
+  .account__form-popup {
+    right: -32px;
+    left: auto;
+  }
+  .account__form-popup::after {
+    right: 30px;
+    left: auto;
+  }
+}
+@media (max-width: 1440px) {
+  .account__info-setting {
+    width: 100%;
+    margin: 0;
+  }
+}
+@media (max-width: 1199px) {
+  .account__info-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .account__form-row {
+    gap: 20px;
+  }
+  .account__form-row div label {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 991px) {
+  .account__info-right {
+    padding: 30px;
+  }
+  .account__row-order {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 767px) {
+  .account__info-left {
+    max-width: 400px;
+  }
+  .account__row-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .account__order-left {
+    overflow-y: hidden;
+    overflow-x: auto;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding-right: 0;
+  }
+  .account__order-row {
+    width: 670px;
+    padding-right: 48px;
+  }
+  .account__order-list {
+    width: 670px;
+    padding-right: 48px;
+  }
+}
+@media (max-width: 575px) {
+  .account__info-right {
+    padding: 23px 15px;
+  }
+  .account__heading {
+    font-size: 18px;
+    margin-bottom: 17px;
+    line-height: 130%;
+  }
+  .account__info-form {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  .account__info-left {
+    padding: 10px 14px;
+  }
+  .account__info-person {
+    margin-bottom: 19px;
+  }
+  .account__info-person span {
+    font-size: 18px;
+  }
+  .account__info-list {
+    font-size: 18px;
+  }
+  .account__info-list li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  .account__info-bonus {
+    font-size: 18px;
+  }
+  .account__info-bonus span {
+    font-size: 35px;
+    margin-top: 2px;
+  }
+  .account__info-bonus {
+    margin-top: 20px;
+  }
+  .account__info-heading {
+    font-size: 18px;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  .account__info-form {
+    margin-top: 18px;
+  }
+  .account__input-name,
+  .account__input-city,
+  .account__input-phone,
+  .account__input-date {
+    height: 38px;
+    width: 100%;
+    color: #323232;
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  .account__form-row div label {
+    font-size: 12px;
+  }
+  .account__row-inputs-bottom {
+    position: relative;
+  }
+  .account__form-tooltip {
+    position: absolute;
+    left: 115px;
+  }
+  .account__form-tooltip svg {
+    display: block;
+  }
+  .account__info-setting {
+    display: flex;
+    justify-content: space-between;
+  }
+  .account__info-setting li a {
+    font-size: 14px;
+  }
+  .account__input-btn {
+    max-width: 148px;
+    height: 34px;
+    font-size: 12px;
+    display: block;
+    margin: 35px auto 0 auto;
+  }
+  .account__order-left {
+    padding: 15px 0px 42px 15px;
+  }
+  .account__order-heading {
+    font-size: 18px;
+  }
+  .account__order-list {
+    margin-top: 25px;
+  }
+  .account__order-watch {
+    font-size: 12px;
+  }
+  .account__order-watch svg {
+    top: 4px;
+  }
+  .account__order-number {
+    font-size: 16px;
+  }
+  .account__order-condition {
+    font-size: 16px;
+  }
+  .account__order-price {
+    font-size: 16px;
+  }
+  .account__form-popup {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    line-height: 20px;
+    max-width: 300px;
+    padding: 10px;
+  }
+  .account__form-popup::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .account__order-row {
+    padding-right: 15px;
+  }
+  .account__order-list {
+    padding-right: 15px;
+  }
+}
+@media (max-width: 375px) {
+  .account__form-popup {
+    transform: translateX(-60%);
+  }
+  .account__form-popup::after {
+    right: 40%;
+  }
+}

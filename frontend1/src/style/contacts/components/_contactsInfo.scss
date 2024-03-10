@@ -1,0 +1,101 @@
+.contacts {
+    line-height: 25px;
+    padding-top: 40px;
+    padding-bottom: 70px;
+    &__columns {
+        display: flex;
+        margin: 40px 0px;
+        @media(max-width: 1150px) {
+            display: block;
+        }
+    }
+    &__column-connection {
+        width: 70%;
+        @media(max-width: 1150px) {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+    }
+    &__connection {
+        display: flex;
+        margin-bottom: 30px;
+        @media(max-width: 650px) {
+            display: block;
+        }
+    }
+    &__tel {
+        display: flex;
+        width: 50%;
+        gap: 10px;
+        @media(max-width: 650px) {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+    &__tel-title {
+        font-size: 20px;
+    }
+    &__list-info {
+        margin-bottom: 5px;
+        a {
+        color: #a19f00;
+        }
+    }
+    &__email {
+        display: flex;
+        width: 50%;
+        gap: 10px;
+        @media(max-width: 650px) {
+            width: 100%;
+        }
+    }
+    &__email-title {
+        font-size: 20px;
+    }
+    &__heading {
+        margin-bottom: 25px;
+    }
+    &__location {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+    }
+    &__shops-list {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 7px;
+        margin-right: 50px;
+    }
+    &__shops {
+        width: calc(100%/2 - 30px /2); 
+        @media(max-width: 650px) {
+            width: 100%;
+        }
+    }
+    &__shops-heading {
+        margin-bottom: 10px;
+    }
+    &__shops-info {
+        color: #a19f00;
+    }
+    &__column-social {
+        width: 30%;
+        @media(max-width: 1150px) {
+            width: 100%;
+        }
+    }
+    &__column-heading {
+        margin-bottom: 30px;
+        font-size: 26px;
+    }
+    &__social {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        img {
+            width: 40px;
+        }
+    }
+}
