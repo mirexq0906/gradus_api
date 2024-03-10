@@ -39,4 +39,6 @@ RUN composer update
 
 # В контейнере открываем 9000 порт и запускаем сервер php-fpm
 EXPOSE 9000
-CMD ["php-fpm"]
+
+# CMD ["php-fpm"]
+
