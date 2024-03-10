@@ -20,7 +20,7 @@ services:
             - db
             - webserver
         command: >
-            bash -c "php artisan migrate:refresh --seed && php artisan passport:install && php-fpm"
+            bash -c "php artisan key:generate && php artisan migrate:refresh --seed && php artisan passport:install && php-fpm"
 
     # Nginx Service
     webserver:
@@ -29,7 +29,7 @@ services:
         restart: always
         tty: true
         ports:
-            - "8080:80"
+            - "5000:80"
             - "443:443"
         volumes:
             - .:/var/www
@@ -54,6 +54,17 @@ services:
             SERVICE_NAME: mysql
         networks:
             - app-network
+
+    web:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+        - "3000:3000"
+        volumes:
+        - ./frontend/src:/usr/src/app/src
+        - ./frontend/public:/usr/src/app/public
+        container_name: web
 # Docker Networks
 networks:
     app-network:
