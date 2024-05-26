@@ -13,8 +13,22 @@ class Product extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'gallery' => 'array',
+    ];
+
     public function reviews()
     {
         return $this->hasMany(Review::class, 'product_id', 'id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function subCategory()
+    {
+        return $this->belongsTo(SubCategory::class, 'subCategory_id', 'id');
     }
 }

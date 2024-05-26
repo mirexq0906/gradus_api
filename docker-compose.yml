@@ -6,19 +6,14 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: php:8.1
         container_name: app
         restart: always
         tty: true
-        environment:
-            SERVICE_NAME: app
-            SERVICE_TAGS: dev
-        working_dir: /var/www
-        networks:
-            - app-network
         depends_on:
             - db
             - webserver
+        networks:
+            - app-network
         command: >
             bash -c "php artisan key:generate && php artisan migrate:refresh --seed && php artisan passport:install && php-fpm"
 
@@ -46,7 +41,7 @@ services:
         restart: always
         tty: true
         ports:
-            - "3306:3306"
+            - "3308:3306"
         environment:
             MYSQL_DATABASE: gradus_db
             MYSQL_ROOT_PASSWORD: root
@@ -55,16 +50,6 @@ services:
         networks:
             - app-network
 
-    web:
-        build:
-            context: ./frontend
-            dockerfile: Dockerfile
-        ports:
-        - "3000:3000"
-        volumes:
-        - ./frontend/src:/usr/src/app/src
-        - ./frontend/public:/usr/src/app/public
-        container_name: web
 # Docker Networks
 networks:
     app-network:
