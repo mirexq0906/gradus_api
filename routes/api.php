@@ -70,7 +70,7 @@ Route::delete('/week_products/{week_product}', [\App\Http\Controllers\WeekProduc
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 
-Route::middleware('auth:api')->group(function() {
+Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
     Route::get('/user', [\App\Http\Controllers\AuthController::class, 'show']);
     Route::put('/user', [\App\Http\Controllers\AuthController::class, 'update']);
@@ -96,7 +96,7 @@ Route::middleware('auth:api')->group(function() {
     Route::delete('/kit_orders/{kit_order}', [\App\Http\Controllers\KitOrderController::class, 'delete']);
 
     Route::post('/reviews', [\App\Http\Controllers\ReviewController::class, 'store']);
-
+    Route::get('/recomend_products', [\App\Http\Controllers\RecomendController::class, 'index']);
 });
 
 Route::get('/error', function () {

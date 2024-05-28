@@ -12,6 +12,7 @@ use App\MoonShine\Resources\EmailClientResource;
 use App\MoonShine\Resources\KitOrderResource;
 use App\MoonShine\Resources\OrderResource;
 use App\MoonShine\Resources\ProductResource;
+use App\MoonShine\Resources\RecomendProductResource;
 use App\MoonShine\Resources\ReviewResource;
 use App\MoonShine\Resources\SubCategoryResource;
 use App\MoonShine\Resources\UserResource;
@@ -71,6 +72,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make('Подкатегории', new SubCategoryResource()),
                 MenuItem::make('Товары', new ProductResource()),
                 MenuItem::make('Товары недели', new WeekProductResource()),
+                MenuItem::make('Рекомендованные товары', new RecomendProductResource()),
             ])->icon('heroicons.shopping-bag'),
             MenuGroup::make('Контент', [
                 MenuItem::make('Видео', new VideoResource()),

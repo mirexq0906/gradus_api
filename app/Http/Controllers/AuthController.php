@@ -9,9 +9,11 @@ use App\Http\Resources\Auth\RegisterResource;
 use App\Http\Resources\Auth\ShowResource;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\RecomendProduct;
 use App\Models\UserData;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -42,9 +44,20 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-
             UserData::create(['user_id' => $user->id]);
-
+            $response = Http::post('http://127.0.0.1:16000/get-recommendations', [
+                'user_id' => 2,
+                'num_recommendations' => 6
+            ]);
+            $productsId = $response->json()['products'];
+            $productsData = [];
+            foreach ($productsId as $item) {
+                $productsData[] = [
+                    'user_id' => $user->id,
+                    'product_id' => $item
+                ];
+            };
+            RecomendProduct::insert($productsData);
             return new RegisterResource($user);
         } catch (\Throwable $e) {
             return response()->json([
