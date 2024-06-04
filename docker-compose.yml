@@ -15,7 +15,7 @@ services:
         networks:
             - app-network
         command: >
-            bash -c "php artisan key:generate && php artisan migrate:refresh --seed && php artisan passport:install && php-fpm"
+            bash -c "php-fpm"
 
     # Nginx Service
     webserver:
@@ -24,7 +24,7 @@ services:
         restart: always
         tty: true
         ports:
-            - "5000:80"
+            - "80:80"
             - "443:443"
         volumes:
             - .:/var/www
@@ -41,7 +41,7 @@ services:
         restart: always
         tty: true
         ports:
-            - "3308:3306"
+            - "3306:3306"
         environment:
             MYSQL_DATABASE: gradus_db
             MYSQL_ROOT_PASSWORD: root
